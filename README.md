@@ -1,65 +1,368 @@
-<<<<<<< HEAD
-# tugas-frontend
-=======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 SI-KRS Frontend - Laravel + Tailwind CSS
+Ini adalah proyek antarmuka pengguna (frontend) berbasis Laravel 10 dan Tailwind CSS yang dirancang untuk terhubung dengan backend REST API (dibangun dengan CodeIgniter 4). Aplikasi ini digunakan untuk mengelola data Mahasiswa, Program Studi (Prodi), dan Kelas.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- [Backend SI-KRS Github](https://github.com/abdau88/eval_pbf_frontend.git)
+- Database/Table
+```
+CREATE TABLE `dosen` (
+`id ` INT AUTO_INCRERMENT,
+  `nama` varchar(100) NOT NULL,
+  `nidn` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `prodi` varchar(100) NOT NULL,
+  PRIMARY KEY (`nidn`)
+);
 
-## About Laravel
+INSERT INTO `dosens` (`nama`, `nidn`, `email`, `prodi`) VALUES
+('Dr. Bambang', '12345678', 'bambang@kampus.ac.id', 'Teknik Informatika'),
+('Dr. Siti', '87654321', 'siti@kampus.ac.id', 'Sistem Informasi');
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+CREATE TABLE `mahasiswa` (
+`id ` INT AUTO_INCRERMENT,
+  `nama` varchar(100) NOT NULL,
+  `nim` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `prodi` varchar(100) NOT NULL,
+  PRIMARY KEY (`nim`)
+);
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+INSERT INTO `mahasiswas` (`nama`, `nim`, `email`, `prodi`) VALUES
+('Andi Saputra', '210001', 'andi@kampus.ac.id', 'Teknik Informatika'),
+('Rina Melati', '210002', 'rina@kampus.ac.id', 'Sistem Informasi');
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Endpoint
+```
+Dosen
+- GET → http://localhost:8080/dosen
+- POST → http://localhost:8080/dosen
+- PUT → http://localhost:8080/dosen/{nidn}
+- DELETE → http://localhost:8080/dosen/{nidn}
+Mahasiswa
+- GET → http://localhost:8080/mahasiswa
+- POST → http://localhost:8080/mahasiswa
+- PUT → http://localhost:8080/mahasiswa/{nim}
+- DELETE → http://localhost:8080/mahasiswa/{nim}
+```
+# ⚙ Teknologi
+- Laravel 10
+- Tailwind CSS
+- Laravel HTTP Client (untuk konsumsi API)
+- Vite (build asset frontend)
+- REST API (CodeIgniter 4)
 
-## Learning Laravel
+# 🧩 Struktur Sistem
+Frontend Laravel ini tidak menyimpan data ke database lokal. Semua proses Create, Read, Update, dan Delete dilakukan melalui REST API backend CodeIgniter.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 🚀 SETUP BACKEND
+1. Clone Repository BE
+```
+git clone https://github.com/abdau88/eval_pbf_frontend.git
+```
+```
+- cd nama-file
+```
+2. Install Dependency CodeIgniter
+``
+composer install
+``
+4. Copy File Environment
+```
+cp .env.example .env
+```
+6. Menjalankan CodeIgniter
+```
+php spark serve
+```
+8. Cek EndPoint menggunakan Postman
+- Kelas :
+```
+- GET → http://localhost:8080/kelas / http://localhost:8080/kelas/{id}
+- POST → http://localhost:8080/kelas
+- PUT → http://localhost:8080/kelas/{id}
+- DELETE → http://localhost:8080/kelas/{id}
+```
+- Prodi :
+```
+- GET → http://localhost:8080/prodi / http://localhost:8080/prodi/{id}
+- POST → http://localhost:8080/prodi
+- PUT → http://localhost:8080/prodi/{id}
+- DELETE → http://localhost:8080/prodi/{id}
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# 🚀 SETUP FRONTEND
+1. Install Laravel
+Install di CMD atau Terminal
+```
+composer create-priject laravel/laravel nama-project
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Install Dependency Laravel
+```
+composer install
+```
+3. Copy File Environment
+```
+cp .env.example .env
+```
+4. Set .env untuk Non-Database App
+```
+APP_NAME=Laravel
+APP_URL=http://localhost:8000
+SESSION_DRIVER=file
+```
 
-## Laravel Sponsors
+5. Cara Menjalankan Laravel server
+```
+php artisan serve
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🧩  Routes
+```
+<?php
 
-### Premium Partners
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\MahasiswaController;
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+*/
 
-## Contributing
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+// Dosen Routes
+Route::get('/dosen', [DosenController::class, 'index'])->name('dosen.index');
+Route::get('/dosen/create', [DosenController::class, 'create'])->name('dosen.create');
+Route::post('/dosen', [DosenController::class, 'store'])->name('dosen.store');
+Route::get('/dosen/{nidn}/edit', [DosenController::class, 'edit'])->name('dosen.edit');
+Route::put('/dosen/{nidn}', [DosenController::class, 'update'])->name('dosen.update');
+Route::delete('/dosen/{nidn}', [DosenController::class, 'destroy'])->name('dosen.destroy');
 
-## Code of Conduct
+// Mahasiswa Routes
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
+Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
+Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
+Route::get('/mahasiswa/{nim}/edit', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
+Route::put('/mahasiswa/{nim}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
+Route::delete('/mahasiswa/{nim}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
 
-## Security Vulnerabilities
+## 🧩  Controllers
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Controller.php
 
-## License
+```
+<?php
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> b16017f (project fe)
+namespace App\Http\Controllers;
+
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
+{
+    use AuthorizesRequests, ValidatesRequests;
+}
+
+```
+2. DashboardController.php
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
+class DashboardController extends Controller
+{
+    public function index()
+    {
+        $dosenResponse = Http::get('http://localhost:8080/dosen');
+        $mahasiswaResponse = Http::get('http://localhost:8080/mahasiswa');
+        
+        $dosen = $dosenResponse->json();
+        $mahasiswa = $mahasiswaResponse->json();
+        
+        $dosenCount = count($dosen);
+        $mahasiswaCount = count($mahasiswa);
+        
+        // Group by prodi for statistics
+        $dosenByProdi = collect($dosen)->groupBy('prodi')->map->count();
+        $mahasiswaByProdi = collect($mahasiswa)->groupBy('prodi')->map->count();
+        
+        return view('dashboard', compact('dosenCount', 'mahasiswaCount', 'dosenByProdi', 'mahasiswaByProdi', 'dosen', 'mahasiswa'));
+    }
+}
+
+```
+
+3. DosenController.php
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+
+class DosenController extends Controller
+{
+    protected $apiUrl = 'http://localhost:8080/dosen';
+
+    public function index()
+    {
+        $response = Http::get($this->apiUrl);
+        $dosen = $response->json();
+
+        return view('dosen.index', compact('dosen'));
+    }
+
+    public function create()
+    {
+        return view('dosen.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:100',
+            'nidn' => 'required|string|max:20',
+            'email' => 'required|email|max:100',
+            'prodi' => 'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $response = Http::post($this->apiUrl, [
+            'nama' => $request->nama,
+            'nidn' => $request->nidn,
+            'email' => $request->email,
+            'prodi' => $request->prodi,
+        ]);
+
+
+        if ($response->successful()) {
+            return redirect()->route('dosen.index')->with('success', 'Dosen berhasil ditambahkan');
+        }
+
+        return redirect()->back()->with('error', 'Gagal menambahkan dosen')->withInput();
+    }
+
+    public function edit($nidn)
+    {
+        $response = Http::get($this->apiUrl);
+        $allDosen = $response->json();
+
+        $dosen = collect($allDosen)->firstWhere('nidn', $nidn);
+
+        if (!$dosen) {
+            return redirect()->route('dosen.index')->with('error', 'Dosen tidak ditemukan');
+        }
+
+        return view('dosen.edit', compact('dosen'));
+    }
+
+    public function update(Request $request, $nidn)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:100',
+            'email' => 'required|email|max:100',
+            'prodi' => 'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+       $response = Http::put("{$this->apiUrl}/{$nidn}", [
+            'nama' => $request->nama,
+            'nidn' => $nidn,
+            'email' => $request->email,
+            'prodi' => $request->prodi,
+        ]);
+
+        if ($response->successful()) {
+            return redirect()->route('dosen.index')->with('success', 'Dosen berhasil diperbarui');
+        }
+
+        return redirect()->back()->with('error', 'Gagal memperbarui dosen')->withInput();
+    }
+
+    public function destroy($nidn)
+    {
+        $response = Http::delete("{$this->apiUrl}/{$nidn}");
+
+        if ($response->successful()) {
+            return redirect()->route('dosen.index')->with('success', 'Dosen berhasil dihapus');
+        }
+
+        return redirect()->route('dosen.index')->with('error', 'Gagal menghapus dosen');
+    }
+}
+
+```
+
+## 🧩  Models
+1. Mahasiswa.php
+```
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Mahasiswa extends Model
+{
+    use HasFactory;
+    
+    protected $table = 'mahasiswa';
+    protected $primaryKey = 'nim';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    
+    protected $fillable = [
+        'nama',
+        'nim',
+        'email',
+        'prodi',
+    ];
+}
+```
+
+2. Dosen.php
+```
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Dosen extends Model
+{
+    use HasFactory;
+    
+    protected $table = 'dosen';
+    protected $primaryKey = 'nidn';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    
+    protected $fillable = [
+        'nama',
+        'nidn',
+        'email',
+        'prodi',
+    ];
+}
+```
