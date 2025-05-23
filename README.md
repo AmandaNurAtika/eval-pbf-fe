@@ -13,7 +13,7 @@ CREATE TABLE `dosen` (
   PRIMARY KEY (`nidn`)
 );
 
-INSERT INTO `dosens` (`nama`, `nidn`, `email`, `prodi`) VALUES
+INSERT INTO `dosen` (`nama`, `nidn`, `email`, `prodi`) VALUES
 ('Dr. Bambang', '12345678', 'bambang@kampus.ac.id', 'Teknik Informatika'),
 ('Dr. Siti', '87654321', 'siti@kampus.ac.id', 'Sistem Informasi');
 
@@ -26,7 +26,7 @@ CREATE TABLE `mahasiswa` (
   PRIMARY KEY (`nim`)
 );
 
-INSERT INTO `mahasiswas` (`nama`, `nim`, `email`, `prodi`) VALUES
+INSERT INTO `mahasiswa` (`nama`, `nim`, `email`, `prodi`) VALUES
 ('Andi Saputra', '210001', 'andi@kampus.ac.id', 'Teknik Informatika'),
 ('Rina Melati', '210002', 'rina@kampus.ac.id', 'Sistem Informasi');
 ```
@@ -75,18 +75,18 @@ cp .env.example .env
 php spark serve
 ```
 8. Cek EndPoint menggunakan Postman
-- Kelas :
+- Mahasiswa :
 ```
-- GET → http://localhost:8080/kelas / http://localhost:8080/kelas/{id}
-- POST → http://localhost:8080/kelas
-- PUT → http://localhost:8080/kelas/{id}
-- DELETE → http://localhost:8080/kelas/{id}
+- GET → http://localhost:8080/mahasiswa 
+- POST → http://localhost:8080/mahasiswa
+- PUT → http://localhost:8080/mahasiswa
+- DELETE → http://localhost:8080/mahasiswa
 ```
-- Prodi :
+- Dosen :
 ```
-- GET → http://localhost:8080/prodi / http://localhost:8080/prodi/{id}
-- POST → http://localhost:8080/prodi
-- PUT → http://localhost:8080/prodi/{id}
+- GET → http://localhost:8080/dosen
+- POST → http://localhost:8080/dosen
+- PUT → http://localhost:8080/dosen{nim}"
 - DELETE → http://localhost:8080/prodi/{id}
 ```
 
