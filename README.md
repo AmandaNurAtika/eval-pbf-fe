@@ -1,7 +1,7 @@
 # 🚀 SI-KRS Frontend - Laravel + Tailwind CSS
 Ini adalah proyek antarmuka pengguna (frontend) berbasis Laravel 10 dan Tailwind CSS yang dirancang untuk terhubung dengan backend REST API (dibangun dengan CodeIgniter 4). Aplikasi ini digunakan untuk mengelola data Mahasiswa, Program Studi (Prodi), dan Kelas.
 
-- [Backend SI-KRS Github](https://github.com/abdau88/eval_pbf_frontend.git)
+- [Backend](https://github.com/abdau88/eval_pbf_frontend.git)
 - Database/Table
 ```
 CREATE TABLE `dosen` (
