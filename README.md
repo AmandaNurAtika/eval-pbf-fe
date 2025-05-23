@@ -60,7 +60,7 @@ Frontend Laravel ini tidak menyimpan data ke database lokal. Semua proses Create
 git clone https://github.com/abdau88/eval_pbf_frontend.git
 ```
 ```
-- cd nama-file
+cd nama-file
 ```
 2. Install Dependency CodeIgniter
 ``
